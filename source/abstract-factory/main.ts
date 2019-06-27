@@ -1,7 +1,7 @@
 import DroidProducer from "./index";
 
-let myFactory = DroidProducer.produce("battle");
+const myFactory = new DroidProducer().produce("pilot");
 
-let droid = new myFactory().getDroid();
+const droid = myFactory();
 
-console.log(droid);
+console.log(droid.info());

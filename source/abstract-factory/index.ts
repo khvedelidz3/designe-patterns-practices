@@ -1,33 +1,32 @@
-import { IDroid, DroidModelType } from "./interfaces"
-
+import { DroidModelType, IDroid } from "./interfaces";
 
 class DroidProducer {
     public produce(kind: DroidModelType): () => IDroid {
-        if (kind === 'battle') {
+        if (kind === "battle") {
             return this.battleDroidFactory;
         }
 
         return this.pilotDroidFactory;
     }
 
-    battleDroidFactory() {
+    protected battleDroidFactory() {
         return new B1();
     }
 
-    pilotDroidFactory() {
+    protected pilotDroidFactory() {
         return new Rx24();
     }
 
 }
 
 class B1 implements IDroid {
-    info() {
+    public info() {
         return "B1, Battle Droid";
     }
 }
 
 class Rx24 implements IDroid {
-    info() {
+    public info() {
         return "Rx24, Pilot Droid";
     }
 }

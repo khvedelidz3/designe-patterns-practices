@@ -1,1 +1,1 @@
-require('./build/abstract-factory/main.js');
+require('./build/proxy/main.js');
