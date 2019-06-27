@@ -10,7 +10,7 @@ class Soldier implements ISoldier {
 }
 
 class Jedi {
-    constructor(protected level: number) {
+    constructor(public level: number) {
     }
 
     public attackWithSaber() {
@@ -18,13 +18,14 @@ class Jedi {
     }
 }
 
-class JediAdapter implements ISoldier {
+class JediAdapter extends Jedi implements ISoldier {
 
     constructor(protected jedi: Jedi) {
+        super(jedi.level);
     }
 
     public attack() {
-        return this.jedi.attackWithSaber();
+        return this.attackWithSaber();
     }
 }
 

@@ -1,6 +1,6 @@
-import {ISheep} from "./interfaces";
+import {ISheep, Prototype} from "./interfaces";
 
-class Sheep implements ISheep {
+class Sheep implements ISheep, Prototype {
 
     constructor(public name: string, public weight: number) {
     }

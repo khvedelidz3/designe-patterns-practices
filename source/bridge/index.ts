@@ -1,7 +1,7 @@
-import {IImplementation, InkType} from "./interfaces";
+import {IPrinter, InkType, IInk} from "./interfaces";
 
-class Printer {
-    constructor(protected i: IImplementation) {
+abstract class Printer implements IPrinter {
+    constructor(public i: IInk) {
     }
 
     public getInk() {
@@ -11,7 +11,7 @@ class Printer {
 
 class EpsonPrinter extends Printer {
     public print() {
-        return "Printer: Epson, Ink: " + this.getInk();
+        return "Printer: Epson, Ink: " + this.getInk()
     }
 }
 
@@ -21,8 +21,8 @@ class HPprinter extends Printer {
     }
 }
 
-class Ink {
-    constructor(protected type: InkType) {
+abstract class Ink implements IInk{
+    constructor(public type: InkType) {
     }
 
     public get() {
@@ -30,13 +30,13 @@ class Ink {
     }
 }
 
-class AcrylicInk extends Ink implements IImplementation {
+class AcrylicInk extends Ink implements IInk {
     constructor() {
         super("acrylic-based");
     }
 }
 
-class AlcoholInk extends Ink implements IImplementation {
+class AlcoholInk extends Ink implements IInk {
     constructor() {
         super("alcohol-based");
     }

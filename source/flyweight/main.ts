@@ -1,8 +1,6 @@
 import {ColorFactory} from "./index";
 
-const colorFactory = new ColorFactory();
+console.log(ColorFactory.create("red"));
+console.log(ColorFactory.create("green"));
 
-console.log(colorFactory.create("red"));
-console.log(colorFactory.create("green"));
-
-console.log(colorFactory.colors);
+console.log(ColorFactory.colors);

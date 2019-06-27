@@ -1,4 +1,5 @@
 class Person {
+    private constructor() { }
     public static getInstance(): Person {
         if (!Person.instance) {
             Person.instance = new Person();
@@ -7,7 +8,6 @@ class Person {
     }
 
     private static instance: Person;
-    public test: string;
 }
 
 export default Person;

@@ -4,17 +4,14 @@ class Color {
 }
 
 class ColorFactory {
-    public colors: Map<string, Color>;
-    constructor() {
-        this.colors = new Map();
-    }
+    static colors: Map<string, Color> = new Map();
 
-    public create(name: string) {
-        if (this.colors.has(name)) {
-            return this.colors.get(name);
+    static create(name: string) {
+        if (ColorFactory.colors.has(name)) {
+            return ColorFactory.colors.get(name);
         }
-        this.colors.set(name, new Color(name));
-        return this.colors.get(name);
+        ColorFactory.colors.set(name, new Color(name));
+        return ColorFactory.colors.get(name);
     }
 }
 

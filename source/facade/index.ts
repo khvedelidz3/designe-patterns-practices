@@ -1,7 +1,9 @@
-class ShopFacade {
-    protected discount: Discount;
-    protected shipping: Shipping;
-    protected fees: Fees;
+import { IShop } from "./interfaces";
+
+class ShopFacade implements IShop {
+    protected discount: IShop;
+    protected shipping: IShop;
+    protected fees: IShop;
 
     constructor() {
         this.discount = new Discount();
@@ -17,20 +19,20 @@ class ShopFacade {
     }
 }
 
-class Discount {
+class Discount implements IShop {
 
     public calc(value: number) {
         return value * 0.9;
     }
 }
 
-class Shipping {
+class Shipping implements IShop {
     public calc() {
         return 5;
     }
 }
 
-class Fees {
+class Fees implements IShop {
 
     public calc(value: number) {
         return value * 1.05;

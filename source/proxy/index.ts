@@ -19,7 +19,7 @@ class CarProxy {
     }
 }
 
-class Car implements ICar{
+class Car implements ICar {
     public drive(): string {
         return "driving";
     }
