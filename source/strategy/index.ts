@@ -3,11 +3,11 @@ import {IStrategy} from "./interfaces";
 class ShoppingCart {
     public amount: number = 0;
 
-    constructor(public discount: IStrategy) {
+    constructor(public discount: (val:number)=>number) {
     }
 
     public checkout() {
-        return new this.discount(this.amount).exec();
+        return this.discount(this.amount);
     }
 
     public setAmount(amount: number) {
@@ -15,37 +15,20 @@ class ShoppingCart {
     }
 
 }
-
-class GuestStrategy implements IStrategy {
-    constructor(public amount: number) {
-    }
-
-    public exec() {
-        return this.amount;
-    }
+const guestStrategy = (amount: number): number => {
+    return amount
 }
-
-class RegularStrategy implements IStrategy {
-    constructor(public amount: number) {
-    }
-
-    public exec() {
-        return this.amount * 0.9;
-    }
-}
-
-class PremiumStrategy implements IStrategy {
-    constructor(public amount: number) {
-    }
-
-    public exec() {
-        return this.amount * 0.8;
-    }
-}
+const regularStrategy = (amount: number): number => {
+    return amount * 0.9;
+ };
+ 
+ const premiumStrategy = (amount: number): number => {
+    return amount * 0.8;
+ };
 
 export {
     ShoppingCart,
-    GuestStrategy,
-    RegularStrategy,
-    PremiumStrategy
+    guestStrategy,
+    regularStrategy,
+    premiumStrategy
 };

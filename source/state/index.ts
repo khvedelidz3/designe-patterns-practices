@@ -1,29 +1,29 @@
 import {IStatus} from "./interfaces";
 
-class OrderStatus {
-    constructor(public name: string, public nextStatus: IStatus) {
+class OrderStatus implements IStatus{
+    constructor(public name: string, public nextStatus: new() => IStatus) {
     }
 
     public next() {
-        return this.nextStatus;
+        return new this.nextStatus();
     }
 }
 
-class WaitingForPayment extends OrderStatus implements IStatus {
+class WaitingForPayment extends OrderStatus {
     constructor() {
-        super("waiting", new Shipping());
+        super("waiting", Shipping);
     }
 }
 
-class Shipping extends OrderStatus implements IStatus {
+class Shipping extends OrderStatus {
     constructor() {
-        super("shipping", new Delivered());
+        super("shipping", Delivered);
     }
 }
 
-class Delivered extends OrderStatus implements IStatus {
+class Delivered extends OrderStatus {
     constructor() {
-        super("delivered", new Delivered());
+        super("delivered", Delivered);
     }
 }
 

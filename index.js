@@ -1,1 +1,1 @@
-require('./build/observer/main.js');
+require('./build/strategy/main.js');
